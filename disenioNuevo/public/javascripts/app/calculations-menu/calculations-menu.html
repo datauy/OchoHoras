@@ -1,0 +1,64 @@
+<div class="calculations-menu">
+	<div class="ribbon">
+		<h2>Estadísticas
+		<span class="glyphicon glyphicon-info-sign" style="display: inline-block; float:right;" data-toggle="tooltip" title="¿Qué estoy viendo? 
+	En ésta gráfica podés ver los montos de los sueldos para la tarea que elegiste en los últimos cinco años y cuántos sueldos de esos montos hay. Cuánto más arriba el punto más alto el sueldo y cuánto más grande más personas cobran ese monto, por esa tarea. A la derecha además podés ver el valor máximo obtenido, el promedio de todos los valores y el valor medio (si das click en “ver más” también te mostramos el desvío estándar y rango, en caso de que te interese).
+	Los datos salen de la Encuesta Contínua de Hogares que realiza el INE y no cubren todos los sueldos existentes en el país en ese año, sino únicamente los que fueron sondedos en la muestra aleatoria. Éstos datos no deben ser tomados como absolutos y perfectamente representativos de todo el mercado laboral, sino como una guía que muestra tendencias en el tiempo." data-placement="right">
+	</span>
+	</h2>
+	</div>
+	<div class="graph">
+		<graph></graph>
+	</div>
+	<div class="numbers">
+		<ul>
+			<li> 
+				<div class="header"> <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Máximo </div> 
+				<div class="value"> ${{stats.MAX | number : 2}}</div>
+			</li>
+			<li> 
+				<div class="header"><i class="fa fa-signal" aria-hidden="true"></i> Promedio </div> 
+				<div class="value"> ${{stats.MEAN | number : 2}}</div>
+			</li>
+			<li> 
+				<div class="header"> <i class="fa fa-signal" aria-hidden="true"></i> Valor medio </div>
+				<div class="value">${{stats.MEDIAN | number : 2}}</div>
+			</li>
+
+			<li ng-show="seeMore"> 
+				<div class="header"> <i class="fa fa-signal" aria-hidden="true" ></i> Desvío estándar </div>
+				<div class="value">${{stats.STDDEV | number : 2}}</div>
+			</li>
+			<li ng-show="seeMore"> 
+				<div class="header"> <i class="fa fa-signal" aria-hidden="true"></i> Rango </div>
+				<div class="value">${{stats.RANGE | number : 2}}</div>
+			</li>
+			
+		</ul>
+		<div class="see-more"> 
+			<span ng-show="!seeMore" ng-click="seeMore = true">Ver más</span>
+			<span ng-show="seeMore" ng-click="seeMore = false">Ver menos</span>
+		</div>
+	</div>
+	<div class="cs" ng-if="consejoSalario.length > 1">
+		<div class="ribbon">
+			<h2>Consejo de salario</h2>
+		</div>
+		<ul>
+			<li ng-repeat="cs in consejoSalario"> 
+				<p>Código : <strong>{{cs.CODIGO}}</strong></p>
+				<p>Descripción : <strong>{{cs.DESCRIPCION}}</strong></p>
+			</li>
+		</ul>
+	</div>
+	<div class="buttons-menu relative">
+		<div class="ribbon">
+			<h2>Cálculos</h2>
+		</div>
+		<ul class='buttons'>
+			<li ng-repeat='(key, calculation) in calculations track by $index'>
+				<a  ng-class="{'cl': color[key]}" ng-href="/#/{{ocupationId}}/{{key}}">{{calculation}}</a>
+			</li>
+		</ul>
+	</div>
+</div>

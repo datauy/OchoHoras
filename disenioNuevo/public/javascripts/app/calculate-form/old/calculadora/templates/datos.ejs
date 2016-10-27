@@ -1,0 +1,411 @@
+<!--AgregarCollapsible group item-->
+
+<div class="question">
+<%if(dato === 'sueldo') {%>
+
+  <h3 class="center-block" id='textoSueldo'>¿Cuál es tu salario nominal mensual?  <span class="glyphicon glyphicon-info-sign" style="display: inline-block; font-size: 15px;" data-toggle="tooltip" title="Ingresos sin descuentos cobrados en dinero" data-placement="right"></span></h3>
+  <div style="text-align:center; margin-top: 30px;">
+      <div class="input-group-addon input-group-addon-currency">UYU</div>
+      <input type='text' placeholder='Sueldo' data-key=sueldo class='input-addon form-control ingresos-custom required-data-input required-data data-custom-size' id= 'required-data-<%= clave %>' name='sueldo' value='0' style="display: inline-block; "></input>
+  </div>
+  
+<%} %>
+
+<%if(dato === 'sueldo_liquido') {%>
+
+  <h3 class="center-block" id='textoSueldoNominal'>¿Cuál es tu salario nominal mensual?  <span class="glyphicon glyphicon-info-sign" style="display: inline-block; font-size: 15px;" data-toggle="tooltip" title="Ingresos sin descuentos cobrados en dinero" data-placement="right"></span></h3>
+  <div style="text-align:center; margin-top: 30px;">
+      <div class="input-group-addon input-group-addon-currency">UYU</div>
+      <input type='text' placeholder='Sueldo' data-key='sueldo_nominal' class='input-addon form-control ingresos-custom required-data-input required-data data-custom-size' id= 'required-data-<%= clave %>' name='sueldo-nominal' value='0' style="display: inline-block; "></input>
+  </div>
+
+  <h3 class="center-block" id='textoSueldoLiquido'>¿Cuál es tu salario líquido mensual?<span class="glyphicon glyphicon-info-sign" style="display: inline-block; font-size: 15px;" data-toggle="tooltip" title="Ingresos con descuentos. Si no sabes tu ingreso líquido haz clic en 'Calcular' y podrás obtener el valor apropiado." data-placement="right"></span></h3>
+  <div style="text-align:center; margin-top: 30px;">
+      <div class="input-group-addon input-group-addon-currency">UYU</div>
+      <input type='text' placeholder='Sueldo' data-key='sueldo_liquido' class='input-addon form-control ingresos-custom required-data-input required-data data-custom-size' id= 'required-data-<%= clave %>' name='sueldo-liquido' value='0' style="display: inline-block; "></input>
+      <button class="btn" id="calcular-salario" style="margin-left: 10px;">Calcular</button>
+  </div>
+
+  <h3 class="center-block" id='textoOtrosIngresos'>Si aplica ingresa el total de los siguientes datos: </h3>
+  <div class="center-block"><h5>Ingresos promedio por horas extra en los últimos 12 meses, promedio mensual de comisiones, <br>viáticos y prima por antigüedad.</h5></div>
+  <div style="text-align:center; margin-top: 30px;">
+      <div class="input-group-addon input-group-addon-currency">UYU</div>
+      <input type='text' placeholder='Otros ingresos' data-key='otros_ingresos_despido' class='input-addon form-control ingresos-custom required-data-input required-data data-custom-size' id= 'required-data-<%= clave %>' name='otros-ingresos-despido' value='0' style="display: inline-block; "></input>
+  </div>
+  
+<%} %>
+
+<%if(dato === 'fecha_de_ingreso') { %>
+<h3 class="center-block" id='textoIngreso'>¿Cuándo comenzaste a trabajar?</h3>
+<div class="input-group-centered">
+  <div class="input-group-addon input-group-addon-calendar"><span class="glyphicon glyphicon-calendar"></span></div><input type=date placeholder='Fecha de ingreso' data-key=fecha_de_ingreso class='input-addon form-control ingresos-custom required-data-input required-data data-custom-size' id= 'required-data-<%= clave %>' name="fecha-ingreso"> </input>
+</div>
+<%}%>
+
+<%if(dato === 'tiene_hijos') {%>
+
+<h3 class="center-block" id='textoHijos'>¿Tienes hijos menores o personas discapacitadas a cargo?</h3><div id='radio-div'> <label class='radio-inline radio-si'><input type=radio data-key=tiene_hijos id= 'required-data-<%= clave %>' name= 'tiene-hijos' value=1 class="required-data"> </input> SI</label> <label class='radio-inline'><input type=radio data-key=tiene_hijos id= 'required-data-<%= clave %>' name= 'tiene-hijos' value=0 class="required-data" checked> </input>NO </label></div>
+<%}%>
+
+<%if(dato === 'conyuge_cargo') {%>
+
+<h3 class="center-block" id='textoConyuge'>¿Tienes cónyuge o concubino a cargo?</h3> 
+<div id='radio-div'><label class='radio-inline radio-si'><input type=radio data-key=conyuge_cargo id= 'required-data-<%= clave %>' name= 'conyuge' value=1 class="required-data"> </input> SI</label><label class='radio-inline'><input type=radio data-key=conyuge_cargo id= 'required-data-<%= clave %>' name= 'conyuge' value=0 class="required-data" checked> </input>NO </label></div>
+<%}%>
+
+<%if(dato === 'horas_trabajadas') {%>
+
+
+<%}%>
+
+<%if(dato === 'horas_extra') {%>
+<div style="text-align: center;"><h3 id='textoHorasExtra' style="display: inline-block; margin-top: 30px;">Horas Extra</h3></div>
+  <label id='textoHorasTrabajadas' class="input-data-normal-weight" style="display: block; margin-left: 64px; margin-top: 30px;">¿Cuántas horas por día has trabajado el mes de cálculo?</label> 
+    <input type=text placeholder='Horas trabajadas' data-key=horas_trabajadas class='form-control ingresos-custom required-data-input required-data' id='required-data-<%= clave %>' style="margin-top: 18px !important; margin-left: 64px !important;" name="horas-trabajadas" value="0"> </input>
+  
+    <label id='textoHorasExtraDiasHabiles' class="input-data-normal-weight" style="display: block; margin-right: 5px; margin-left: 64px;">¿Cuántas horas extra has realizado en días hábiles?  <span class="glyphicon glyphicon-info-sign" style="display: inline-block;" data-toggle="tooltip" title="Ingresa la cantidad de horas que has trabajado este mes de lunes a viernes y en días feriados en los cuales habitualmente se trabaje. Se considera día hábil aquel en que normalmente debe prestar servicio el trabajador." data-placement="right"></span></label>
+    
+    <input style="display: block; margin-top: 18px !important; margin-left: 64px !important;" type=text placeholder='Horas extra' data-key='horas_extra_dias_habiles' class='ingresos-custom required-data-input required-data form-control' id= 'required-data-<%= clave %>' name="horas-extra-dias-habiles" value="0"> </input>
+ 
+
+  <label class="input-data-normal-weight" style="margin-left: 60px; display: block; margin-right: 5px;" id='textoHorasExtraFeriadosDescanso'>¿Cuántas horas has realizado en días feriados o de asueto semanal dentro del horario normal de trabajo?   <span class="glyphicon glyphicon-info-sign" style="display: inline-block; font-size: 15px;" data-toggle="tooltip" title="Ingresa la cantidad de horas que has trabajado este mes en días de asueto semanal o feriados, en los cuales generalmente no se trabaje" data-placement="right"></span> </label> <input type=text placeholder='Horas extra' data-key=horas_extra_feriados_descanso class='required-data-input required-data ingresos-custom form-control' id= 'required-data-<%= clave %>' name="horas-extra-feriados-descanso" value="0" style="margin-top: 18px !important; margin-left: 64px !important;"> </input> 
+
+
+  <label class="input-data-normal-weight" style="display: block; margin-right: 5px;margin-left: 64px;" id='textoHorasExtraFeriadosDescanso'>¿Cuántas horas has realizado en días feriados o de asueto semanal fuera de las horas que trabajas normalmente?   <span class="glyphicon glyphicon-info-sign" style="display: inline-block; font-size: 15px;" data-toggle="tooltip" title="Ingresa la cantidad de horas que has trabajado este mes en días de asueto semanal o feriados, en los cuales generalmente no se trabaje" data-placement="right"></span> </label> <input type=text placeholder='Horas extra especiales' data-key=horas_extra_feriados_descanso_especiales class='ingresos-custom required-data-input required-data form-control' id= 'required-data-<%= clave %>' name="horas-extra-feriados-descanso-especiales" value="0" style="margin-top: 18px !important; margin-left: 64px !important;"> </input>
+
+<%}%>
+
+<%if(dato === 'ingresos') {%>
+
+
+<div style="text-align: center;"><h3 id='textoIngresos' style="display: inline-block; margin-top:20px;">¿Cuáles fueron tus ingresos el mes de cálculo?</h3>
+<span class="glyphicon glyphicon-info-sign" style="display: inline-block;" data-toggle="tooltip" title="Debes agregar todos los ingresos nominales (sin descuentos) que hayas cobrado en dinero el mes de cálculo, así como también todas aquellas partidas adicionales al sueldo que conllevan aportes a la seguridad social. Si este mes has cobrado el aguinaldo o el salario vacacional también debes incluirlos." data-placement="right"></span></div>
+
+<div>
+  <label class="input-data-normal-weight" style="display: inline-block; margin-top:35px; margin-right: 5px; margin-left: 70px;"> Mes de cálculo </label>
+  <span class="glyphicon glyphicon-info-sign" style="display: inline-block;" data-toggle="tooltip" title="Mes para el que deseas calcular el salario líquido. En caso de tratarse de Junio o Diciembre deberás ingresar también el aguinaldo." data-placement="right"></span>
+  <select data-key=mes_calculo id= 'required-data-<%= clave %>' name="mes-calculo" class="required-data-input required-data mes_calculo_select form-control" style="display: block; margin-top:10px; height: 33px; width: 350px !important; margin-bottom: 10px; margin-left: 70px;">
+        <option value="enero">Enero</option>
+        <option value="febrero">Febrero</option>
+        <option value="marzo">Marzo</option>
+        <option value="abril">Abril</option>
+        <option value="mayo">Mayo</option>
+        <option value="junio">Junio</option>
+        <option value="julio">Julio</option>
+        <option value="agosto">Agosto</option>
+        <option value="setiembre">Setiembre</option>
+        <option value="octubre">Octubre</option>
+        <option value="noviembre">Noviembre</option>
+        <option value="diciembre">Diciembre</option>
+    </select>
+  <div id='aguinaldo_salario' style="display: none">
+    <label class="input-data-normal-weight" style="margin-top: 5px; margin-left: 70px;"> Aguinaldo cobrado el mes de cálculo </label> 
+    <div style="margin-left: 70px;">
+        <div class="input-group-addon input-group-addon-currency">UYU</div>
+        <input type=text placeholder='Aguinaldo' data-key=aguinaldo_salario class='input-addon required-data-input required-data ingresos-custom form-control' id= 'required-data-<%= clave %>4'  name="aguinaldo-salario" value="0" style="display: block;"> </input>
+    </div>
+  </div>
+
+
+  <label class="input-data-normal-weight" style="margin-top: 5px; display: inline-block; margin-right: 5px; margin-left: 70px;"> Ingreso nominal</label><span class="glyphicon glyphicon-info-sign" style="display: inline-block;" data-toggle="tooltip" title="Ingresos sin descuentos cobrados en dinero" data-placement="right"></span>
+  <div style="margin-left: 70px;">
+    <div class="input-group-addon input-group-addon-currency">UYU</div>
+    <input class='input-addon form-control ingresos-custom required-data-input required-data' type="text" placeholder='Ingreso nominal' data-key="ingreso_nominal" id='required-data-<%= clave %>0' name="ingreso-nominal" value="0"/>
+  </div>
+  <label class="input-data-normal-weight" style="margin-right: 5px; margin-left: 70px;"> Otros ingresos del mes que aporten a la Seguridad Social <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Ingresa todas las partidas complementarias que generen aportes a la Seguridad Social, por ejemplo las comisiones" data-placement="right"></span> </label>
+  <div style="margin-left: 70px;">
+      <div class="input-group-addon input-group-addon-currency">UYU</div>
+      <input type='text' placeholder='Otros ingresos gravados' data-key='ingresos_gravados' class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>1' name="ingresos-gravados" value="0" style="display: block;"> </input>
+  </div>
+
+  <label class="input-data-normal-weight" style="margin-right: 5px; margin-left: 70px;"> Otros ingresos del mes que no impliquen aportes a Seguridad Social <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Suma de todas las partidas complementarias que NO generen aportes a la Seguridad Social, por ejemplo seguro de vida pagado por la empresa" data-placement="right"></span> </label>
+  <div style="margin-left: 70px;">
+    <div class="input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Otros ingresos no gravados' data-key=ingresos_no_gravados class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>2' name="ingresos-no-gravados" value="0" style="display: block;"> </input>
+  </div>
+
+
+  <label class="input-data-normal-weight" style="margin-right: 5px; margin-left: 70px;"> Salario Vacacional <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Salario vacacional nominal si se ha cobrado en el mes de cálculo" data-placement="right"></span></label>
+  <div style="margin-left: 70px;">
+    <div class="input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Salario vacacional' data-key=ingreso_salario_vacacional class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>3' name="ingreso-salario-vacacional" value="0" style="display: block;"> </input>
+  </div>
+</div>
+<%}%>
+
+<%if(dato === 'ingresos_aguinaldo') { %>
+
+  <div style="text-align: center;">
+    <h3 id='textoIngresos' style="display: inline-block; margin-top: 70px;" >¿Cuáles fueron tus ingresos nominales de los últimos 6 meses?</h3> <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Ingresa todo lo que hayas cobrado en dinero en cada mes, pero no debes incluir el salario vacacional." data-placement="right"></span>
+  </div>
+
+  <div style="margin: 0 auto;">
+
+    <label style="width: 347px !important; display: block; margin-top:25px; font-weight: 300; margin-left: 70px;"> Semestre de cálculo</label>
+    <select data-key=semestre_aguinaldo id= 'required-data-<%= clave %>' name="semestre-aguinaldo" class="required-data-input required-data semestre_aguinaldo_select form-control" style="display: block; margin-top:15px; margin-left: 70px; margin-bottom: 15px;">
+        <option value="primero">Diciembre a mayo</option>
+        <option value="segundo">Junio a noviembre</option>
+    </select>
+    <div id="ingresos_aguinaldo_div">
+      <label style="display: inline-block; font-weight: 300; margin-left: 70px;"> Ingreso nominal diciembre</label>
+      <div style="margin-left: 70px;">
+        <div class="input-group-addon input-group-addon-currency">UYU</div>
+        <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_0 class='input-addon form-control ingresos-custom required-data-input required-data input-to-copy' id= 'required-data-<%= clave %>0' name="aguinaldo-0" value="0"> </input>
+        <button type="button" id="copiar" style="margin-left: 15px;" class="btn">Copiar</button>
+        <button type="button" id="copiar-todos" style="margin-left: 15px;" class="btn">Copiar a todos</button>
+      </div> 
+
+      <label style="display: block; font-weight: 300; margin-left: 70px;"> Ingreso nominal enero</label>
+      <div style="margin-left: 70px;">
+        <div class="input-group-addon input-group-addon-currency">UYU</div>
+          <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_1 class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>1' name="aguinaldo-1" value="0" style="display: block; margin-top: 0px !important;"> </input>
+        </div>
+
+        <label style="display: block; font-weight: 300; margin-left: 70px;"> Ingreso nominal febrero</label>
+        <div style="margin-left: 70px;">
+          <div class="input-group-addon input-group-addon-currency">UYU</div>
+          <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_2 class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>2' name="aguinaldo-2" value="0" style="display: block; margin-top: 0px !important;"> </input>
+        </div>
+
+        <label style="display: block; font-weight: 300; margin-left: 70px;"> Ingreso nominal marzo</label>
+        <div style="margin-left: 70px;">
+          <div class="input-group-addon input-group-addon-currency">UYU</div>
+          <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_3 class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>3' name="aguinaldo-3" value="0" style="display: block; margin-top: 0px !important;"> </input>
+        </div>
+
+        <label style="display: block; font-weight: 300; margin-left: 70px;"> Ingreso nominal abril</label>
+        <div style="margin-left: 70px;">
+          <div class="input-group-addon input-group-addon-currency">UYU</div>
+          <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_4 class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>4' name="aguinaldo-4" value="0" style="display: block; margin-top: 0px !important;"> </input>
+        </div>
+        <label style="display: block; font-weight: 300; margin-left: 70px;"> Ingreso nominal mayo</label>
+        <div style="margin-left: 70px;">
+          <div class="input-group-addon input-group-addon-currency">UYU</div>
+          <input type=text placeholder='Ingreso nominal' data-key=aguinaldo_5 class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>5' name="aguinaldo-5" value="0" style="display: block; margin-top: 0px !important;"> </input>
+        </div>
+    </div>
+  </div>
+<%}%>
+
+<%if(dato === 'cantidad_hijos') { %>
+
+<div style="text-align: center;"><h3 id='textoDeducciones' style="display: inline-block; margin-top: 30px;">Deducciones por hijos o personas a tu cargo</h3></div>
+
+<div stlye="margin-left:20px;">
+  <label class="input-data-normal-weight" style="margin-top:30px; margin-left: 70px;"> Porcentaje deducción de personas a cargo </label>
+  <select data-key=porcentaje_deduccion_cant_hijos id= 'required-data-<%= clave %>' name="porcentaje-deduccion-cant-hijos" class="required-data-input required-data form-control" style="display: block; margin-top:15px; margin-left: 70px; margin-bottom: 30px;" value=0>
+      <option value=0>0% deducción</option>
+      <option value=50>50% deducción</option>
+      <option value=100>100% deducción</option>
+  </select>
+
+     <label class="input-data-normal-weight" style="display: block; margin-top:30px; margin-left: 70px;"> Cantidad personas a cargo sin discapacidad (hijos menores de edad)</label>
+     <input type=text placeholder='' data-key=cantidad_hijos_sin_disc class='form-control required-data-input required-data ingresos-custom' id= 'required-data-<%= clave %>' name="cantidad-hijos-sin-disc" style="display: block; margin-top:15px; margin-left: 70px !important;" value="0"> </input>
+     <label class="input-data-normal-weight" style="display: block; margin-top:18px; margin-left: 70px;"> Cantidad personas a cargo con discapacidad</label>
+     <input type=text placeholder='' data-key=cantidad_hijos_disc class='form-control required-data-input required-data ingresos-custom' id= 'required-data-<%= clave %>' name="cantidad-hijos-disc" style="display: block; margin-top:15px; margin-bottom: 0px; margin-left: 70px !important;" value="0"> </input>
+   </div>
+<%}%>
+
+<%if(dato === 'profesionales') {%>
+
+<div style="text-align: center;"><h3 id='textoProfesionales' style="display: inline-block; margin-top: 30px;">Aportes Profesionales</h3></div>
+<div>
+  <label class="input-data-normal-weight" style="margin-top:30px; display: inline-block; margin-right: 5px; margin-left: 70px;"> Fondo de Solidaridad </label><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Si sos egresado de la Universidad de la República, el Consejo de Educación Técnico Profesional de la UTU o de la Universidad Tecnológica, debes especificar el aporte al Fondo de Solidaridad que te corresponde realizar anualmente. Si no sabes el aporte exacto, haz clic en 'Calcular aporte'" data-placement="right"></span>
+
+  <div style="display: block; margin-left: 70px;">
+   <select data-key=aporte_fondo_solidaridad id='required-data-<%= clave %>' name="aporte-fondo-solidaridad" class="required-data-input required-data adicional_fondo_select form-control" style="display: inline-block; margin-top:10px; margin-bottom:10px !important;">
+      <option value="0">0 BPC</option>
+      <option value="1/2">1/2 BPC</option>
+      <option value="1">1 BPC</option>
+      <option value="2">2 BPC</option>
+  </select>
+
+ 
+    <button type="button" class="btn" id="calcular-fondo-solidaridad" style="display: inline-block; margin-left: 70px; margin-left: 30px;">Calcular aporte</button>
+   </div>
+      <div id="calculos-fondo-solidaridad"> </div>
+     <label id="adicional_fondo_label0" class="input-data-normal-weight" style="margin-top: 35px; display: inline-block; margin-right: 5px; margin-left: 70px;"> ¿Corresponde Adicional Fondo de Solidaridad?</label><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Si tu carrera tiene una duración de 5 o más años y hace 5 o más años que te recibiste, entonces debes pagar el aporte adicional." data-placement="right" id="adicional_fondo_label5"></span>
+     
+     <div style="margin-top: 20px; margin-left: 70px;"><label id="adicional_fondo_label1" class='radio-inline'><input type=radio data-key=adicional_fondo_solidaridad id= 'required-data-<%= clave %> adicional_fondo_label2' name= 'adicional-fondo-solidaridad' value=1 class="required-data"> </input> SI</label> <label class='radio-inline' id="adicional_fondo_label3"><input type=radio data-key=adicional_fondo_solidaridad id= 'required-data-<%= clave %> adicional_fondo_label4' name= 'adicional-fondo-solidaridad' value=0 class="required-data" checked> </input>NO </label></div>
+     <label class="input-data-normal-weight" style="margin-top: 15px; margin-left: 70px;"> Aporte mensual a CJPPU o Caja Notarial <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Aporte mensual a la Caja de Jubilaciones y Pensiones de Profesionales Universitarios (CJPPU) o la Caja Notarial" data-placement="right"></span> </label>
+     <input type=text placeholder='' data-key=aporte_caja_notarial class='form-control required-data-input required-data ingresos-custom' id= 'required-data-<%= clave %>' name="aporte-caja-notarial" value="0" style="margin-top: 22px; margin-bottom: 50px; margin-left: 70px !important;"> </input>
+<%}%>  
+
+<%if(dato === 'otros_datos') {%>
+  <label class="input-data-normal-weight" style='margin-left: 70px; margin-top:35px;'>Otras deducciones mensuales que puedan aplicar <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Ingresa todas las deducciones que puedan aplicar y no estén incluidas en los datos anteriores. Se puede ingresar valores negativos si es necesario." data-placement="right"></span></label>
+  <div style='margin-left: 70px;'>
+    <div class="input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Otras deducciones' data-key=otras_deducciones class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' name="otras-deducciones" value="0"> </input>
+  </div>
+  <label class="input-data-normal-weight" style='margin-left: 70px; margin-top: 15px;'>¿Realizas aportes a la AFAP?</label>
+  <div style="margin-left: 70px; margin-top:10px;">
+  <label class='radio-inline'><input type=radio data-key=opcion_afap id= 'required-data-<%= clave %>' name= 'opcion-afap' value=1 class="required-data"> </input> SI</label> <label class='radio-inline'><input type=radio data-key=opcion_afap id= 'required-data-<%= clave %>' name= 'opcion-afap' value=0 class="required-data radio-no" checked> </input>NO </label>
+</div>
+
+<div style="display: block; margin-top:10px;">
+  <label class="input-data-normal-weight" style="display: inline-block;margin-left: 70px;">¿Corresponde reducción retención Núcleo Familiar?</label>
+  <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Si durante el año anterior alguno de los integrantes del Núcleo Familiar no fue contribuyente del IRPF por sus rentas de trabajo, uno de los dos puede solicitar la reducción de las retenciones que se le efectúan por las rentas en relación de dependencia." data-placement="right"></span>
+</div>  
+<div style="margin-left: 70px; margin-top:10px;">
+<label class='radio-inline'><input type=radio data-key=reduccion_nf id= 'required-data-<%= clave %>' name= 'reduccion-nf' value=1 class="required-data"> </input> SI</label> <label class='radio-inline'><input type=radio data-key=reduccion_nf id= 'required-data-<%= clave %>' name= 'reduccion-nf' value=0 class="required-data radio-no" checked> </input>NO </label>
+</div>
+
+<div style="display: block; margin-top: 10px;">
+<label class="input-data-normal-weight" style="display: inline-block; margin-left: 70px;">¿Aplica mínimo no imponible?</label>
+<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Quienes perciban simultáneamente rentas de trabajo provenientes de más de un empleador, más de una pasividad o ingresos en relación de dependencia y pasividades, solamente podrán deducir el mínimo no imponible de las rentas que perciban en una de las fuentes pagadoras, excepto en aquellos casos en que la suma de la totalidad de las mencionadas rentas no supere el mínimo no imponible. En esta última situación, el mínimo no imponible se aplicará a todas las retribuciones." data-placement="right"></span>
+</div>
+<div style="margin-left: 70px; margin-top:10px;">
+<label class='radio-inline'><input type=radio data-key=minimo_no_imponible id= 'required-data-<%= clave %>' name= 'minimo-no-imponible' value=1 class="required-data"> </input> SI</label> <label class='radio-inline'><input type=radio data-key=minimo_no_imponible id= 'required-data-<%= clave %>' name= 'minimo-no-imponible' value=0 class="required-data radio-no" checked> </input>NO </label>
+</div>
+
+<div style="display: block; margin-top:10px;">
+<label class="input-data-normal-weight" style="display: inline-block; margin-left: 70px;">¿Corresponde exclusión del régimen de retenciones?</label>
+<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Podrán elegirlo los contribuyentes que cumplan simultáneamente las siguientes condiciones: 1. La totalidad de los ingresos nominales de trabajo obtenidos en relación de dependencia (sin considerar el aguinaldo y el salario vacacional) no superen mensualmente $29.600, y a su vez estimen que dichos ingresos anuales no van a superar los $355.200 en el ejercicio 2016. 2. Que no pretendan optar por liquidar el IRPF del ejercicio 2016 por Núcleo Familiar. 3. Que no hubieran obtenido, y estimen que no van a obtener durante el ejercicio 2016, rentas originadas en la prestación de servicios personales fuera de la relación de dependencia, gravadas por el IRPF o el IRAE." data-placement="right"></span>
+</div>
+
+<div style="margin-left: 70px; margin-top:10px;">
+<label class='radio-inline'><input type=radio data-key=regimen_retenciones id= 'required-data-<%= clave %>' name= 'regimen-retenciones' value=1 class="required-data radio-si"> </input> SI</label> <label class='radio-inline'><input type=radio data-key=regimen_retenciones id= 'required-data-<%= clave %>' name= 'regimen-retenciones' value=0 class="required-data radio-no" checked> </input>NO </label>
+</div>
+<%}%>
+
+<%if(dato === 'dias_licencia_pendientes') {%>
+
+<h3 id='textoDiasLicenciaPendientes'>¿Cuántos días de licencia te han quedado pendientes?</h3><div style="text-align:center; margin-top: 30px;"> <input type=text placeholder='Días de licencia pendientes' data-key=dias_licencia_pendientes class='form-control ingresos-custom required-data-input required-data normal-input' id= 'required-data-<%= clave %>' name="dias-licencia-pendientes" value=0> </input></div>
+<%}%>
+
+<%if(dato === 'fecha_de_renuncia') { %>
+
+<h3 id='textoRenuncia'>¿Cuándo fue efectuada la renuncia?</h3>
+<div class="input-group-centered">
+  <div class="input-group-addon input-group-addon-calendar"><span class="glyphicon glyphicon-calendar"></span></div>
+  <input type=date placeholder='Fecha de renuncia' data-key=fecha_de_renuncia class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' name="fecha-renuncia"> </input>
+</div>
+<%}%>
+
+<%if(dato === 'fecha_de_despido') { %>
+<h3 id='textoDespido'>¿Cuándo fue efectuado el despido?</h3>
+<div class="input-group-centered">
+  <div class="input-group-addon input-group-addon-calendar"><span class="glyphicon glyphicon-calendar"></span></div>
+  <input type=date placeholder='Fecha de despido' data-key=fecha_de_despido class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' name="fecha-despido"> </input>
+</div>
+<%}%>
+
+<%if(dato === 'ultimos_ingresos') { %>
+  <h3 id='textoIngresos'>¿Cuáles fueron tus ingresos nominales de los últimos 6 meses?</h3>
+  <div style="margin-top:35px; margin-left: 70px;">
+    <div class="input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Primer mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>0' value="0" name="ultimos-ingresos0"> </input> <button type="button" id="copiar-seg-paro" style="margin-left: 15px;" class="btn">Copiar</button>
+      <button type="button" id="copiar-todos-seg-paro" style="margin-left: 15px;" class="btn">Copiar a todos</button>
+  </div>
+  <div style="margin-left: 70px;">
+    <div class="form-control input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Segundo mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>1' value="0" name="ultimos-ingresos1"> </input>
+  </div>
+  <div style="margin-left: 70px;">
+    <div class="form-control input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Tercer mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>2' value="0" name="ultimos-ingresos2"> </input>
+  </div>
+  <div style="margin-left: 70px;">
+    <div class="form-control input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Cuarto mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>3' value="0" name="ultimos-ingresos3"> </input>
+  </div>
+  <div style="margin-left: 70px;">
+    <div class="form-control input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Quinto mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>4' value="0" name="ultimos-ingresos4"> </input>
+  </div>
+  <div style="margin-left: 70px;">
+    <div class="form-control input-group-addon input-group-addon-currency">UYU</div>
+    <input type=text placeholder='Sexto mes' data-key=ultimos_ingresos class='input-addon form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>5' value="0" name="ultimos-ingresos5"> </input>
+  </div>
+<%}%>
+
+<%if(dato === 'causal_subsidio') { %>
+  <h3 id='causalTexto'>¿Cuál es la causa por la que se te otorga el Seguro de Paro?</h3>
+<div style="text-align: center; display:block;">
+<select data-key=causal_subsidio_dropdown id= 'required-data-<%= clave %>' name="causal-subsidio-dropdown" class="required-data-input required-data causal_select form-control" style="display:inline-block;">
+      <option value="despido">Despido</option>
+      <option value="suspension">Suspensión total del trabajo</option>
+  </select>
+  <div id="ingresos_seguro_paro">
+  </div>
+</div>
+<%}%>
+
+<%if(dato === 'horas_diarias') { %>
+  <h3 id='horasDiariasTexto'>¿Cuántas horas trabajas por día?</h3>
+  <div class="input-group-centered">
+    <input type=text placeholder='Horas diarias' data-key=horas_diarias class='form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>0' value="0" name="horas-diarias"> </input>
+  </div>
+<%}%>
+
+<%if(dato === 'aplica_suplemento') { %>
+  <h3 id='aplicaSuplementoTexto'>¿Aplica alguna de las siguientes condiciones? <br><br></h3>
+  <div style="margin-left: 70px !important; display:block;">
+  <h4> 
+    1) Eres casado o vives en concubinato. <br> <br>
+    2) Tienes a cargo familiares que sean menores, ciegos o sordomudos, o discapacitados. <br> <br>
+    3) Tienes descendientes menores de 21 años o ascendientes.<br><br>
+  </h4>
+</div>
+  
+  <div style="text-align: center; margin-top: 20px;">
+  <label class='radio-inline radio-si'><input type='radio' data-key='aplica_suplemento' id='required-data-<%= clave %>' name= 'aplica-suplemento' value=1 class="required-data" > </input> SI</label> <label class='radio-inline'><input type=radio data-key=aplica_suplemento id= 'required-data-<%= clave %>' name= 'aplica-suplemento' value=0 class="required-data" checked> </input>NO </label>
+</div>
+<%}%>
+
+<%if(dato === 'descanso_semanal') { %>
+  <label id="descanso_label"> </label>
+<%}%>
+
+<%if(dato === 'aportes_del_año') { %>
+  <h3 id='aportesDelAñoTexto' style="margin-top: 40px;"> Aportes a la Seguridad Social realizados en el año</h3>
+  <label style="margin-top:45px; display:block; font-weight: 300; margin-left: 70px;"> Aportes Jubilatorios </label>
+  <input style="margin-top: 12px; margin-left: 70px; margin-bottom: 0px;" type=text placeholder='Aportes' data-key=aportes_jubilatorios class='form-control required-data-input required-data' id= 'required-data-<%= clave %>0' name="aportes-jubilatorios" value="0"> </input>
+
+  <label style="margin-top:25px; display:block; font-weight: 300; margin-left: 70px;"> Aportes Seguro de Salud o Enfermedad </label>
+  <input style="margin-top: 12px; margin-left: 70px; margin-bottom: 0px;" type=text placeholder='Aportes' data-key=aportes_sse class='form-control required-data-input required-data' id= 'required-data-<%= clave %>0' name="aportes-sse" value="0"> </input>
+
+  <label style="margin-top:25px; display:block; font-weight: 300; margin-left: 70px;"> Aportes FRL </label>
+  <input style="margin-top: 12px; margin-left: 70px; margin-bottom: 0px;" type=text placeholder='Aportes' data-key=aportes_frl class='form-control required-data-input required-data' id= 'required-data-<%= clave %>0' name="aportes-frl" value="0"> </input>  
+<%}%>
+
+<%if(dato === 'otros_datos_dev_irpf') { %>
+
+  <label style="margin-top:35px; font-weight: 300; margin-left: 70px; margin-bottom: 10px;">Otras deducciones anuales que puedan aplicar <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Ingrese todas las deducciones que puedan aplicar y no estén incluidas en los datos anteriores. Se puede ingresar valores negativos si es necesario." data-placement="right"></span></label>
+  
+  <input style="margin-top: 10px; margin-left: 70px !important; display:block !important;" type=text placeholder='Otras deducciones' data-key='otras_deducciones' class='form-control required-data-input required-data ingresos-custom' id= 'required-data-<%= clave %>' name="otras-deducciones" value="0"> </input>
+
+  <label style="margin-top:35px; display:block; font-weight: 300; margin-left: 70px;">Opción reducción retención NF</label>
+  <div style="margin-left: 70px;margin-top: 10px;"
+  <label class='radio-inline' style="margin-left: 13px;"><input type=radio data-key=reduccion_nf id= 'required-data-<%= clave %>' name= 'reduccion-nf' value=1 class="required-data input_reduccion_nf_si"> </input> SI</label> <label class='radio-inline' style="margin-left: 13px;"><input style="margin-left: -19px;" type=radio data-key=reduccion_nf id= 'required-data-<%= clave %>' name= 'reduccion-nf' value=0 class="required-data input_reduccion_nf_no" checked> </input>NO </label>
+</div>
+
+  <div id="reduccion_nf_adicional" style="display: none">
+    <label style="margin-top: 20px; margin-left: 70px; font-weight: 300;"> Ingrese monto rentas computables del mes de diciembre <span class='glyphicon glyphicon-info-sign' data-toggle='tooltip' title='Ingrese todas las rentas computables del mes.' data-placement='right'></span></label>
+    
+    <input style='margin-top: 10px; margin-left: 70px; display: block;' type=text placeholder='Monto rentas' data-key=rentas_computables_mes class='form-control required-data-input required-data' id= 'required-data-<%= clave %>' name='rentas-computables-mes' value='0'> </input>
+  </div>
+
+  <label style="margin-top:32px; display:block; margin-left: 70px; font-weight: 300;">Total de retenciones realizadas durante el año (mes de noviembre inclusive) <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Ingrese todas las retenciones de IRPF que se hayan realizado durante todo el año de cálculo." data-placement="right"></span></label>
+  
+  <input style="margin-top: 10px; margin-left: 70px !important;" type=text placeholder='Total retenciones' data-key=total_retenciones class='form-control required-data-input required-data ingresos-custom' id= 'required-data-<%= clave %>' name="total-retenciones" value="0"> </input>
+<%}%>
+
+<%if(dato === 'ingresos_dev_irpf') { %>
+  <h3 id='textoIngresos' style="margin-top: 20px;">¿Cuáles fueron tus ingresos gravados por IRPF de este año?</h3>
+<div style="text-align:center;">
+  <input type=text placeholder='Ingresos' data-key=ingresos class='form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' style="display: inline-block; margin-top: 35px !important;" name="ingresos-0" value="0"> </input>
+  <button type="button" class="btn btn-default" style="display: inline-block; margin-right: 5px;" id="agregar-input-ingreso">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button>
+
+  <div id="mas-inputs"></div>
+</div>
+  <label style="margin-top: 25px; font-weight: 300; display:block; margin-left: 90px;"> Aguinaldo </label>
+  <input style="margin-top: 12px; margin-bottom: 20px; display:block; margin-left: 90px !important;" type=text placeholder='Aguinaldo' data-key=aguinaldo_irpf class='form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' name="aguinaldo-irpf" value="0"> </input>
+  <label style="margin-top: 5px; font-weight: 300; display:block; margin-left: 90px;"> Salario vacacional </label>
+  <input style="margin-top: 12px; margin-bottom: 10px; display:block; margin-left: 90px !important;" type=text placeholder='Salario vacacional' data-key=salario_vacacional class='form-control ingresos-custom required-data-input required-data' id= 'required-data-<%= clave %>' name="salario-vacacional" value="0"> </input>
+
+<%}%>
+
+</div>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+
+        <link href="/stylesheets/theme/bootstrap.min.css" rel="stylesheet">
+        <link href="/stylesheets/theme/datepicker3.css" rel="stylesheet">
+        <link href="/stylesheets/theme/styles.css" rel="stylesheet">
+        <link href="/javascripts/libs/intro.js-2.0/minified/intro.min.css" rel="stylesheet">
+        <link href="/javascripts/libs/intro.js-2.0/minified/introjs-rtl.min.css" rel="stylesheet">
+
+        <!--Icons-->
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="/javascripts/libs/require.js"></script>
+        <script src="/javascripts/config.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script src="/javascripts/libs/require.js"></script>
+        <script src="/javascripts/config.js"></script>
+
+        <script src="javascripts/theme/lumino.glyphs.js"></script>
+
+
+        <!-- <script src="/javascripts/app.js"></script>-->
+        <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    </head>
+    <body class="pryct">
+        <div class="container-fluid">
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="ingresoRubro">Rubro</label>
+                            <input type="text" class="form-control" name="ingresoRubro" id="ingresoRubro" placeholder="Rubro" list="rubros">
+                            <datalist id="rubros"></datalist>
+                        </div>
+                        <div class="form-group" id="ingresoSubRubroContainer" style="display:none">
+                            <label for="ingresoSubRubro">Subrubro</label>
+                            <input type="text" class="form-control" id="ingresoSubRubro" name="ingresoSubRubro" placeholder="Subrubro" list = "subRubro">
+                            <datalist id="subRubro"></datalist>
+                        </div>
+                        <div class="form-group" id="ingresoCalculo" style="display:none">
+                            <label for="exampleInputPassword1">Calcular</label>
+                            <select class="form-control" id="calcularValorSelect">
+                                <option>-Calcular-</option>
+                                <option>Salario líquido</option>
+                                <option value="Aguinaldo">Aguinaldo</option>
+                                <option>Salario vacacional</option>
+                                <option>Renuncia</option>
+                                <option>Despido</option>
+                                <option>Horas extra</option>
+                                <option>Seguro de paro</option>
+                                <option>Licencia por estudio</option>
+                                <option>Licencia por paternidad</option>
+                                <option>Licencia por maternidad</option>
+                                <option>Licencia por adopción y legitimación adoptiva</option>
+                                <option>Licencia por matrimonio</option>
+                                <option>Licencia por duelo</option>
+                            </select>
+                        </div>
+                </div>
+                           
+
+                <div class="col-md-9" id='result-div' style="display:none">
+                    <h3 id='conceptoTexto'>Concepto</h3>
+                    <p id='conceptoDescripcion'>Texto del concepto</p>
+                    <div id='tabs' class="tabs-container">
+                        <ul class="nav nav-tabs" id="tabs-ul">
+                        </ul>
+                        <div id="tab-content">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9" id="rubro-data" style="display:none">
+                    <div id="info-sub-rubro">
+                        
+                    </div>
+                    <div class="grafica">
+                        <canvas id="salario" width="570px" height="300px"></canvas>
+                    </div>
+                </div>
+
+
+                <div class="col-md-9" id="main">
+                    <div id="main">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="logo">
+                                    <img src="/images/logo.png"></img>
+                                </h1>
+                                <h3 class="desc">Qué encontraré?</h3>
+                                <p class="description">
+                                    Encontrarás una herramienta que te permitirá calcular tu salario líquido, aguinaldo, salario vacacional, días de licencia. A su vez, podrás contextualizarte en el mercado laboral, ver la demanda en tu rubro y los salarios promedio. <br> También te brindamos un medio para denunciar tu situación laboral en la Dirección Nacional de Trabajo o MTSS según corresponda. 
+
+                                                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grafica">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><strong>Demandas en el mercado</strong></h5>
+                                <canvas id="grafica1" width="400px" height="230px"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><strong>Promedios salariales</strong></h5>
+                                <canvas id="grafica2" width="400px" height="230px">></canvas>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="javascripts/theme/jquery-1.11.1.min.js"></script>
+        <script src="javascripts/theme/bootstrap.min.js"></script>
+        <script src="javascripts/theme/chart.min.js"></script>
+        <script src="javascripts/theme/chart-data.js"></script>
+        <!--script src="javascripts/theme/easypiechart.js"></script-->
+        <!--script src="javascripts/theme/easypiechart-data.js"></script-->
+        <script src="javascripts/theme/bootstrap-datepicker.js"></script>
+    </body>
+</html>

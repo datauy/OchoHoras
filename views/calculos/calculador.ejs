@@ -1,0 +1,38 @@
+<%- include ../header.ejs %>
+<%- include ../mainBody.ejs %>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"></h1>
+    </div>
+</div>
+<div class="row">
+<div class="col-md-9">
+<div class="panel panel-info">
+		<div class="panel-heading">
+			<%= aCalcular %>
+		</div>
+		<div class="panel-body">
+			<%- descripcion %>
+		</div>
+	</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-9" id='result-div' style="display:none;">
+	<div class="panel panel-default">
+    <div id='tabs' class="panel-body tabs">
+        <ul class="nav nav-pills" id="tabs-ul">
+        </ul>
+        <div id="tab-content" class="tab-content">
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+	var calculoKey = '<%= key %>';
+</script>
+<%- include ../footer.ejs %>

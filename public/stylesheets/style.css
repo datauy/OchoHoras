@@ -1,0 +1,269 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.ingresos-custom {
+  display: inline !important;
+  padding: 6px 12px !important;
+  padding-left: 10px !important;
+  font-size: 14px !important;
+  line-height: 1.42857143 !important;
+  color: #555 !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  margin-left: -4px !important;
+  margin-bottom: 10px !important;
+  margin-top: 8px !important;
+  width: 300px !important;
+  height: 37px !important;
+  border: 1px solid #eee;
+    box-shadow: none;
+}
+
+input.required-data {
+  font-size: 20px;
+}
+
+#required-data-00 {
+  font-size: 20px;
+}
+
+body.pryct {
+  padding: 50px 15px;
+  font-family: 'Lato', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-size: 14px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/*
+#tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  visibility: hidden;
+  position: absolute;
+  text-align:center;
+  left: 0;
+  right: 0;
+  margin-top: 40px;
+}
+
+#tab-content > .active,
+.pill-content > .active {
+   visibility: visible;
+   position: absolute;
+   text-align: center; 
+   left: 0;
+   right: 0;
+   margin-top: 40px;
+}
+*/
+.required-data-input {
+
+	margin-top:30px;
+	width: 300px !important; 
+  margin-bottom: 40px;
+  height: 37px;
+}
+
+.normal-input {
+    margin: 0 auto;
+    margin-top: 55px;
+}
+
+.input-group-addon-currency {
+  margin-top: -2px !important;
+  display: inline-block;
+  width: 51px;
+  height: 37px !important;
+  padding: 10px 12px !important;
+}
+
+.input-group-addon-calendar {
+  margin-top: -2px !important;
+  margin-left: -4px;
+  display: inline-block;
+  width: 51px;
+  height: 37px !important;
+  padding: 10px 12px !important;
+}
+
+.input-group-centered {
+  width: 100%;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.input-group-left {
+  width: 100%;
+  margin-top: 25px;
+  display: inline;
+  margin-left: -3px;
+}
+
+.input-group .form-control {
+  float: inherit !important;
+}
+
+.required-data-ingresos {
+  margin-top:10px; 
+  width: 300px !important; 
+  margin-left: auto; 
+  margin-right: auto
+}
+
+.pryct .form-control{
+  border-radius: 0px;
+}
+.rubro-info{
+  padding-left: 0px;
+}
+
+.rubro-info li{
+  background: white;
+  margin-right: 10px;
+  box-shadow: 1px 2px 10px 0px rgba(150,150,150,0.12);
+  border: 1px solid #e6e6e6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  list-style: none;
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+  padding: 15px;
+}
+
+.rubro-info li .titulo{
+  font-size: 16px;
+}
+
+.rubro-info li .dato{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#tab-content label{
+  font-size: 16px;
+}
+
+#main .logo{
+  margin-left: -10%;
+}
+
+#main .desc{
+  
+}
+
+.description{
+  width: 85%;
+}
+
+.grafica h5{
+  margin-left: 40px; 
+}
+
+.next-button{
+  float: right;
+  margin-right: 40px;
+  margin-bottom: 23px;
+}
+
+.tab-pane:before,
+.tab-pane:after{
+  content : "";
+  display: table;
+  clear:both;
+}
+
+.icon-ok {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  color: rgba(10,200,121,1);
+}
+
+.nav-pills>li {
+  position: relative;  
+}
+
+.nav-pills li.active a {
+    background: #33A6B2 !important;
+    color: #FFFFFF !important;
+}
+.nav-pills li.active a:hover {
+  background: #33A6B2 !important;
+    color: #FFFFFF !important;
+}
+
+.nav-pills a {
+  color: #33A6B2 !important;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 600px;
+}
+
+.question {
+  padding-bottom: 50px;
+}
+
+#radio-div {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.radio-si {
+  margin-right: 30px;
+  margin-left: 5px;
+}
+
+.radio-no {
+  margin-left: 40px;
+}
+
+.panel-info>.panel-heading {
+  background-color: #c2e4e8;
+  color: #0A3A4A;
+}
+
+.page-header {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.input-data-normal-weight {
+    display: block;
+    margin-top: 20px;
+    font-weight: 300;
+}
+
+.disabled a {
+  pointer-events: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.a-green:hover {
+  color: #33A6B2;
+}
+.a-green:focus {
+  color: #33A6B2;
+}
+
+
+input[type=radio]:checked ~ .check {
+  border: 5px solid #0DFF92;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #0DFF92;
+}
+
+input[type=radio]:checked ~ label{
+  color: #0DFF92;
+}
