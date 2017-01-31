@@ -1,6 +1,6 @@
 define(function (require) {
 
-	var BCP = 3340;
+	var BCP = 3611;
 
 	var api = {
 
@@ -63,15 +63,15 @@ define(function (require) {
 		},
 
 		calcularAportesIRPF : function(sumaBPS, sumaSinBPS, sumaDeducciones, aporteBPS, aplicaMNI) {
-			var arrayMaxRenta = [23380, 33400, 50100, 167000, 250500, 384100];
+			var arrayMaxRenta = [25277, 36110, 54165, 108330, 180550, 270825, 415265];
 
-			var tasaFranjaRenta = [0, 10, 15, 20, 22, 25, 30];
+			var tasaFranjaRenta = [0, 10, 15, 24, 25, 27, 31, 36];
 
-			var arrayMaxDeduc = [10020, 26720, 143620, 227120, 360720];
+			var arrayMaxDeduc = [54165];
 
 			var tasaFranjaDeduc = [10, 15, 20, 22, 25, 30];
 
-			var minimoNoImponible = 23380;
+			var minimoNoImponible = 25277;
 
 			//Si los ingresos gravados superan los 10 BCP se hace un incremento del 6%
 			if(sumaBPS > (BCP * 10)) {
@@ -82,7 +82,7 @@ define(function (require) {
 
 			var totalMonto = sumaBPS + sumaSinBPS ;
 
-			if(aplicaMNI) {
+			if(!aplicaMNI) {
 				totalMonto += minimoNoImponible;
 			}
 
@@ -92,7 +92,7 @@ define(function (require) {
 
 			var sumaRenta = calcularSuma(arrayMaxRenta, tasaFranjaRenta, totalMonto);
 
-			var sumaDeduc = calcularSuma(arrayMaxDeduc, tasaFranjaDeduc, totalBPS);
+			var sumaDeduc = calcularDeducciones(totalBPS);
 			console.log("RENTA " + sumaRenta + " DEDUC " + sumaDeduc);
 
 			var aporteIRPF = Math.max(sumaRenta[0] - sumaDeduc[0], 0);
@@ -127,10 +127,21 @@ define(function (require) {
 		return primerDesc + segundoDesc + tercerDesc;
 	}
 
+	function calcularDeducciones(totalBPS) {
+		var tasa = 0;
+		if(totalBPS <= BCP * 15) {
+			tasa = 10;
+		} else {
+			tasa = 8; 
+		}
+		var deduc = totalBPS * tasa / 100;
+		return [deduc, tasa];
+	}
+
 	function calcularSuma(arrayMax, arrayTasa, total) {
 
 		var sumaTotal = 0;
-		var tasa = 30;
+		var tasa = 36;
 		var tasaMaxDescuento = 0;
 		for(var j = 0; j < arrayMax.length; j++) {
 			tasa = arrayTasa[j];
