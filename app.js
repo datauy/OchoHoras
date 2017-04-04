@@ -7,11 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var calculos = require('./routes/calculos');
 var procesador = require('./routes/procesador');
-
-
-var moment = require('moment');
 
 var app = express();
 
@@ -27,12 +23,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/calculos', calculos);
+app.use('/sobre-nosotros', function(req, res, next) {
+  res.render('sobreProyecto', { title: 'Express' });
+});
 
-app.use('/actividades', procesador);
+app.use('/users', users);
 app.use('/ocupaciones', procesador);
+app.use('/*', routes);
+//app.use('/denunciar', denunciar);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

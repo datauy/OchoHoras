@@ -1,0 +1,26 @@
+
+
+<div class="ocupation-form" ng-class="{'defined':defined, 'finished':defined}">
+	<span class="text">¿A qué te dedicas?</span>
+	<div class="ocupation">
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<span id="ocupation-input" class="input input--makiko col-xs-9 col-sm-10" ng-class="{'input--filled': searchText, 'input-completed': defined }">
+				<input ng-model="searchText" class="input__field input__field--makiko " type="text" id="input-16" ng-keyup="$event.keyCode == 13 && goToOptions()">
+				<label class="input__label input__label--makiko" for="input-16" ng-hide="searchText">
+					<span class="input__label-content input__label-content--makiko">Ocupación</span>
+				</label>
+			</span>
+			<button style="z-index:1000!important;" class="confirm col-xs-1 col-sm-1" ng-click="goToOptions()"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+			<div class="col-xs-1"></div>
+		</div>
+		<a href="http://www.ine.gub.uy/documents/10181/33603/LISTADO+NACIONAL+DE+DENOMINACIONES+DE+OCUPACIONES++.pdf/c35f1f93-ec1a-4928-9b45-6a0ad0c74ea5" target="_blank">No se mi ocupación</a>
+		<div class="auto-complete-container">
+			<div class="auto-complete" ng-class="{'opened': options.length }">
+				<ul>
+					<li ng-repeat="option in options track by $index" ng-click="selectOcupation(option)">{{option.DESCRIPCION}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

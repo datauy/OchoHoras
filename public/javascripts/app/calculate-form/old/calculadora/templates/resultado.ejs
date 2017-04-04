@@ -1,0 +1,55 @@
+<%if("Días de licencia" in items) {%>
+	<h5 style="margin-top: 25px; margin-left: 10px;"> Días de licencia generados: <%=items["Días de licencia"]%></h5>
+<%}%>
+<%var showTotal = false; %>
+<%var totalTitulo = ""; %>
+<%var totalValor = 0; %>
+<table data-toggle="table" data-url="tables/data2.json" >
+	<%for(var key in items) { %>
+		<%if(items[key][1] === "total") { %>
+			<% showTotal = true; %>
+			<% totalTitulo = key; %>
+			<% totalValor = items[key][0]; %>
+		<%}%>
+		<%if(items[key] === "Días de licencia" || items[key][1] === "total") {%>
+			<%continue;%>
+		<%}%>
+ 		<%if(items[key][1] === "suma") {%>
+			<tr>
+				<td class="result-text"> <b><%=key%></b>  </td>
+				<td class="result-value">UYU <%=Math.round(items[key][0]*100)/100%> </td>
+				<td style="padding: 10px;"> </td>
+				<td style="padding: 10px;"> </td>
+			</tr>
+		<%}%>
+		<%if(items[key][1] === "info") {%>
+			<tr>
+				<td class="result-text"> <b><%=key%></b>  </td>
+				<td class="result-value"><%=items[key][0]%> </td>
+				<td style="padding: 10px;"> </td>
+				<td style="padding: 10px;"> </td>
+			</tr>
+		<%}%>
+		<%if(items[key][1] === "resta") {%>
+			<tr>
+				<td style="padding: 10px;"> </td>
+				<td style="padding: 10px;"> </td>
+				<td class="result-value">UYU <%=Math.round(items[key][0]*100)/100%> </td>
+				<td class="result-text"> <b><%=key%></b>  </td>
+			</tr>
+		<%}%>
+	<%}%>
+	<%if(showTotal) {%>
+		<tr>
+			<td class="result-text"><b><%=totalTitulo%></b></td>
+			<td class="result-value" colspan="2">UYU <%=Math.round(totalValor*100)/100%> </td>
+			<td style="padding: 10px;"> </td>
+			<td style="padding: 10px;"> </td>
+		</tr>
+		
+	<%}%>
+	
+</table>
+<%if("Días de licencia" in items) {%>
+			<p style="margin-left: 10px; text-size:12px;">* El cálculo no incluye descuentos por IRPF</p>
+		<%}%>

@@ -1,10 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
 var rp 		= require('request-promise');
 
 
-//var  url = 'http://ancient-mesa-15026.herokuapp.com';
-var  url = 'http://localhost:3001';
+var  url = 'http://ancient-mesa-15026.herokuapp.com';
+//var  url = 'http://localhost:3001';
 /* GET home page. */
 router.get('/*', function(req, res, next) {
 	console.log(url+req.originalUrl)

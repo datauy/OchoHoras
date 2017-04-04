@@ -1,0 +1,32 @@
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	  <div class="about">
+	  <ul>
+	    <li class="active"><a href="/">Inicio</a></li>
+	    <!--<li><a href="#">Denunciar</a></li>-->
+	    <li><a href="/sobre-nosotros" target="_self">Sobre nosotros</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+<side-nav></side-nav>
+<div class="row" style="margin-left: 0px !important;">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 25px; padding-right: 0px !important; padding-left: 0px !important;">
+	  <main>
+		<div class="titulo-presentacion" ng-show="showMainDesc">
+			<img id="logo-image" style="display:inline-block; vertical-align: middle;" src="/img/logo.png"/>
+			<div id="home-text" style="display: inline-block; vertical-align: middle;">
+				<h3 style="border-bottom: 1px solid #aaa;"><p style="font-weight: bold;">¿Querés saber cuánto se paga por tu trabajo?</p> <p>¿calcular el IRPF?</p> <p>¿tus días de licencia?</p> </h3>
+				<h4>Para eso y todos los cálculos que tienen que ver con el mundo laboral, existe esta herramienta. Empezá por contarnos a qué te dedicás en el recuadro de abajo. Simplemente empezá a escribir y elegí entre las opciones que te mostramos, la que mejor describa tu trabajo.</h4>
+			</div>
+		</div>
+	</main>
+  </div>
+</div>
+  <div class="row" style="margin-left: 0px !important;">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <auto-complete text='ocupation.DESCRIPCION'></auto-complete>
+  	<div ui-view></div>  
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<nav class="custom-nav" ng-class="{'opened':open}">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#calculations-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+  <div class="collapse navbar-collapse" id="calculations-navbar">
+    <ul>
+     	<li ng-click="goHome()">
+     		<a>Estadisticas</a>
+    	</li>
+
+      <li ng-class="{'active' : calculationKey == key, 'parent': calculation.children}"  ng-repeat='(key, calculation) in calculations track by $index' ng-click="goTo(key, calculation)">
+      	<a ng-if="calculation.children">{{calculation.name}}</a>
+      	<a ng-if="!calculation.children">{{calculation}}</a>
+      	<ul style="position:relative; z-index:10;" ng-if="calculation.expanded">
+      		<li ng-click="goTo(key)" ng-repeat='(key, children) in calculation.children track by $index'>
+      			<a >{{children}}</a>
+      		</li>
+      	</ul>
+     </li>
+    </ul>
+  </div>
+</nav>
